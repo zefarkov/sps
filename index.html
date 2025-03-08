@@ -40,6 +40,11 @@
             font-size: 36px;
             margin-bottom: 20px;
         }
+        h2 {
+            color: #1c67a8;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
 
         p {
             font-size: 18px;
@@ -78,20 +83,12 @@
             margin-bottom: 10px;
         }
 
-        /* Horizontal line styling */
-        hr {
-            border: 0;
-            height: 1px;
-            background: #ccc;
-            margin: 40px 0;
-            width: 100%;
-        }
-
         /* Полезные ссылки section */
         .useful-links {
             font-size: 24px; /* Adjust the size as needed */
             color: #1c67a8;
-            text-align: center;
+            text-align: left;
+            margin-top: 20px;
         }
 
         .useful-links a {
@@ -101,6 +98,28 @@
 
         .useful-links a:hover {
             text-decoration: underline;
+        }
+
+        .useful-links ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0;
+        }
+
+        .useful-links ul li {
+            margin: 20px 0;
+        }
+
+        /* Heading style */
+        .heading {
+            font-size: 28px;
+            color: #1c67a8;
+            margin-bottom: 10px;
+        }
+
+        .sub-heading {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -118,13 +137,17 @@
             <p>Позвоните нам: <a href="tel:+998933113199">+998933113199</a></p>
         </div>
     </div>
+	<div class="container">
+	<h2>Полезные ссылки:</h2>
+	<div class="useful-links">
+	<ul>
+            <li><a href="https://instagram.com/spowers.uz" target="_blank">Инстаграм</a></li>
 
-    <!-- Horizontal line -->
-    <hr>
+            <li><a href="https://t.me/spowers_uz" target="_blank">Телеграм канал</a></li>
 
-    <!-- Полезные ссылки section -->
-    <div class="useful-links">
-        <a href="links.html">Полезные ссылки</a>
-    </div>
+            <li><a href="http://www.youtube.com/@spowers_uz" target="_blank">YouTube</a></li>
+        </ul>
+	</div>
+</div>
 </body>
 </html>
