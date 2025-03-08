@@ -109,17 +109,32 @@
             margin: 20px 0;
         }
 
-        /* Heading style */
-        .heading {
-            font-size: 28px;
-            color: #1c67a8;
-            margin-bottom: 10px;
+        /* Phone Number Form */
+        .phone-form {
+            margin-top: 20px;
         }
 
-        .sub-heading {
-            font-size: 20px;
-            color: #333;
-            margin-bottom: 20px;
+        .phone-form input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .phone-form button {
+            padding: 10px 20px;
+            background-color: #1c67a8;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .phone-form button:hover {
+            background-color: #155a8a;
         }
     </style>
 </head>
@@ -136,18 +151,56 @@
             <p>Для связи с нами, пишите на <a href="mailto:info@spowers.uz">info@spowers.uz</a></p>
             <p>Позвоните нам: <a href="tel:+998933113199">+998933113199</a></p>
         </div>
+
+        <!-- Phone Number Form -->
+        <div class="phone-form">
+            <h2>Оставьте ваш номер, мы вам позвоним!</h2>
+            <form id="phoneForm">
+                <input type="tel" id="phone" name="phone" placeholder="+998933113199" required>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
     </div>
-	<div class="container">
-	<h2>Полезные ссылки:</h2>
-	<div class="useful-links">
-	<ul>
-            <li><a href="https://instagram.com/spowers.uz" target="_blank">Инстаграм</a></li>
 
-            <li><a href="https://t.me/spowers_uz" target="_blank">Телеграм канал</a></li>
+    <div class="container">
+        <h2>Полезные ссылки:</h2>
+        <div class="useful-links">
+            <ul>
+                <li><a href="https://instagram.com/spowers.uz" target="_blank">Инстаграм</a></li>
+                <li><a href="https://t.me/spowers_uz" target="_blank">Телеграм канал</a></li>
+                <li><a href="http://www.youtube.com/@spowers_uz" target="_blank">YouTube</a></li>
+            </ul>
+        </div>
+    </div>
 
-            <li><a href="http://www.youtube.com/@spowers_uz" target="_blank">YouTube</a></li>
-        </ul>
-	</div>
-</div>
+    <script>
+        // Handle form submission
+        document.getElementById('phoneForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const phoneNumber = document.getElementById('phone').value;
+
+
+            // Send the phone number to your Cloudflare Worker
+            const workerUrl = 'https://spowers-visit-informet-bot.orange-frog-033f.workers.dev/'; // Replace with your Worker URL
+            try {
+                const response = await fetch(workerUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ phone: phoneNumber }),
+                });
+
+                if (response.ok) {
+                    alert('Спасибо! Ваш номер телефона был отправлен.');
+                } else {
+                    alert('Ошибка при отправке номера телефона. Пожалуйста, попробуйте еще раз.');
+                }
+            } catch (error) {
+                console.error('Ошибка:', error);
+                alert('Произошла ошибка. Пожалуйста, попробуйте еще раз.');
+            }
+        });
+    </script>
 </body>
 </html>
